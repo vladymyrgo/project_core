@@ -3,7 +3,10 @@
 *.swo
 *.sublime-*
 *.swp
+public/
 env/
+logs/
+contrib/passwords/
 project_core.conf
 celerybeat.pid
 .noseids
