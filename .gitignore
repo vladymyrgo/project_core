@@ -3,16 +3,12 @@
 *.swo
 *.sublime-*
 *.swp
-public/*
-env/*
-logs/*
-contrib/passwords/*
+env/
 project_core.conf
 celerybeat.pid
 .noseids
 django/project_core/settings/_secret.py
 django/project_core/settings/local.py
-django/project_core/static/
 *.ipynb
 design/node_modules/
 design/bower_components/
