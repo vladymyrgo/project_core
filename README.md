@@ -51,7 +51,7 @@ Create new app:
     - [add urls namespace to urls/urls.py]
 
 Templates creation:
-    - create template/app_name/new_template.jinja2 in apps/app_name/ directory
+    - create apps/app_name/template/app_name/new_template.jinja2
 
 
 ### END GETTING STARTED ###
