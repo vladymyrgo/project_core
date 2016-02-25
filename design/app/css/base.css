@@ -1,0 +1,58 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 52px;
+}
+
+.content {
+    margin-bottom: 52px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 52px;
+}
+
+#logo {
+    color: #000066;
+    font-size: 27px;
+}
+
+.top-buffer {
+    margin-top:20px;
+}
+
+.top-buffer-big {
+    margin-top:60px;
+}
+
+.disable-margin-bottom {
+    margin-bottom: 0px !important;
+}
+
+.disable-padding {
+    padding: 0px !important;
+}
+
+.disable-padding-right {
+    padding-right: 0px !important;
+}
+
+.disable-padding-bottom {
+    padding-bottom: 0px !important;
+}
+
+.overflow-hidden {
+    overflow:hidden;
+}
+
+.text-grey {
+    color: #636363;
+}

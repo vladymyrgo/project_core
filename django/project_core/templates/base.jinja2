@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      <link href="{{ static("css/base.css") }}" rel="stylesheet">
+      <link href="{{ static("css/bootstrap/bootstrap.min.css") }}" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="wsUrl" content="{% if settings.NGINX %}/rt{% else %}http://127.0.0.1:9000/rt{% endif %}">
+    {% endblock head %}
+  </head>
+  <body>
+    {% block header %}
+    {% endblock header %}
+
+    <div class="content">
+      {% block content %}
+      {% endblock content %}
+    </div>
+
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block scripts %}
+      <script src="{{ static("js/lib-bower/jquery/jquery.js") }}"></script>
+      <script src="{{ static("js/lib-bower/bootstrap/bootstrap.js") }}"></script>
+      <script src="https://cdn.jsdelivr.net/sockjs/1.0.3/sockjs.min.js"></script>
+      <script src="{{ static("js/ws.js") }}"></script>
+    {% endblock scripts %}
+  </body>
+</html>

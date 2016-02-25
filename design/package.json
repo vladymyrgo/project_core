@@ -1,0 +1,9 @@
+{
+  "name": "project_core",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-bower-task": "~0.4.0"
+  }
+}

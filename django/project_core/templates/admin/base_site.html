@@ -1,0 +1,8 @@
+{% extends "admin/base_site.html" %}
+{% load staticfiles %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script src="https://cdn.jsdelivr.net/sockjs/1.0.3/sockjs.min.js"></script>
+    <script src="{% static "js/ws.js" %}"></script>
+{% endblock %}
