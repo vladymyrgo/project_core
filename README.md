@@ -34,7 +34,9 @@ Core for django project.
 
 5. mkvirtualenv && pip install -r requirements/requirements_development.txt
 
-6. Rewrite this README.md
+6. make makemigrations && make migrate
+
+7. Rewrite this README.md
 
 !!! END REPOSITORY CHANGES !!!
 ### END INSTALLATION ###
