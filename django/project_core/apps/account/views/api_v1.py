@@ -9,6 +9,9 @@ from haystack.inputs import AutoQuery
 from account.models import User
 from account.serializers import UserListSerializer, UserDetailSerializer
 
+from core.reusable_core.core_bridges import LogicBridgeView
+from account.reusable_core.views_api_logic import AccountSearchListViewLogic
+
 
 class AccountListView(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,
@@ -17,23 +20,19 @@ class AccountListView(generics.ListAPIView):
     serializer_class = UserListSerializer
 
 
-class AccountSearchListView(generics.ListAPIView):
+class AccountSearchListView(generics.ListAPIView, LogicBridgeView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = UserListSerializer
-
-    def get_search(self):
-        query = self.request.query_params
-        return query.get('search', None)
+    logic = AccountSearchListViewLogic
 
     def get_queryset(self):
-        search = self.get_search()
+        search = self.logic.get_search_query()
+
+        # Django-Haystack
         search_queryset = (SearchQuerySet().filter(content__contains=AutoQuery(search))
                                            .models(User))
-        if search_queryset:
-            ids = [o.pk for o in search_queryset]
-            return User.objects.actual_list().filter(id__in=ids)
-        else:
-            return User.objects.none()
+
+        return self.logic.get_users_queryset_by_search_queryset(search_queryset)
 
 
 class AccountDetailView(generics.RetrieveAPIView):

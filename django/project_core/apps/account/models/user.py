@@ -4,13 +4,19 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.utils.translation import ugettext_lazy as _
 
+from account.reusable_core.models_adapters import UserAdapter
+from account.reusable_core.models_interfaces import UserInterface
+
 
 class UserManager(UserManager):
     def actual_list(self):
         return self.get_queryset().filter(is_active=True)
 
+    def actual_list_by_ids(self, ids):
+        return self.actual_list().filter(id__in=ids)
 
-class User(AbstractBaseUser, PermissionsMixin):
+
+class User(AbstractBaseUser, PermissionsMixin, UserAdapter, UserInterface):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 

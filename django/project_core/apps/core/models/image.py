@@ -3,6 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from core.utils.utils import handle_filename
 
+from core.reusable_core.models_adapters import ImageAdapter
+from core.reusable_core.models_interfaces import ImageInterface
+
 from core.models import CoreModel, CoreManager
 
 
@@ -10,7 +13,7 @@ class ImageManager(CoreManager):
     pass
 
 
-class Image(CoreModel):
+class Image(CoreModel, ImageAdapter, ImageInterface):
     img = models.ImageField(_('image'), upload_to=handle_filename)
 
     objects = ImageManager()
@@ -24,5 +27,5 @@ class Image(CoreModel):
         return 'image'
 
     def delete(self, *args, **kwargs):
-        self.img.delete(save=False)
+        self.delete_img()
         super(Image, self).delete(*args, **kwargs)
