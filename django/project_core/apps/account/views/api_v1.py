@@ -23,7 +23,7 @@ class AccountListView(generics.ListAPIView):
 class AccountSearchListView(generics.ListAPIView, LogicBridgeView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = UserListSerializer
-    logic = AccountSearchListViewLogic
+    logic_class = AccountSearchListViewLogic
 
     def get_queryset(self):
         search = self.logic.get_search_query()

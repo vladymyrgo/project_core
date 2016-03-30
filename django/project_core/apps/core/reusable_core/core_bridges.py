@@ -14,14 +14,21 @@ class RequestBridge(object):
 
 
 class LogicBridgeView(object):
-    """Abstract view that adds business logic to derived view as 'logic' attribute.
+    """Abstract view that adds business logic to derived view as 'logic' property.
     It must be inherited by views that use business logic. Business logic must be written in
-    separate class that is derived from 'BaseLogic'.
+    separate class that is derived from 'BaseLogic' and must be in the view as
+    'logic_class' attribute.
     """
-    def __init__(self):
-        request_bridge = RequestBridge(django_request=self.request)
+    logic_instance = None
 
-        self.logic = self.logic_view(request_bridge=request_bridge)
+    @property
+    def logic(self):
+        if not self.logic_instance:
+            request_bridge = RequestBridge(django_request=self.request)
+
+            self.logic_instance = self.logic_class(request_bridge=request_bridge)
+
+        return self.logic_instance
 
 
 class BaseLogic(object):
