@@ -19,16 +19,16 @@ class LogicBridgeView(object):
     separate class that is derived from 'BaseLogic' and must be in the view as
     'logic_class' attribute.
     """
-    logic_instance = None
+    __logic_instance = None
 
     @property
     def logic(self):
-        if not self.logic_instance:
+        if not self.__logic_instance:
             request_bridge = RequestBridge(django_request=self.request)
 
-            self.logic_instance = self.logic_class(request_bridge=request_bridge)
+            self.__logic_instance = self.logic_class(request_bridge=request_bridge)
 
-        return self.logic_instance
+        return self.__logic_instance
 
 
 class BaseLogic(object):
