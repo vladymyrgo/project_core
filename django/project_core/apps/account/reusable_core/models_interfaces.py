@@ -1,50 +1,25 @@
-from core.reusable_core.models_interfaces import CoreModelInterface
+from core.reusable_core.models_interfaces import CoreInterface, CoreModelInterface
 
 
-class UserInterface(object):
+class UserInterface(CoreInterface):
+    _required_attributes = [
+        # properties:
+        'prt_is_active',
+        'prt_date_joined',
+        'prt_email',
+        'prt_username',
+        'prt_is_staff',
+        'prt_is_superuser',
+        'prt_last_login',
+        'prt_password',
+
+        # methods:
+        'is_authenticated',
+        'get_short_name',
+        'get_full_name',
+    ]
 
     def __unicode__(self):
-        raise NotImplementedError()
-
-    def is_authenticated(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_is_active(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_date_joined(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_email(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_username(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_is_staff(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_is_superuser(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_last_login(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_password(self):
-        raise NotImplementedError()
-
-    def get_short_name(self):
-        raise NotImplementedError()
-
-    def get_full_name(self):
         raise NotImplementedError()
 
     @classmethod
@@ -57,17 +32,12 @@ class UserInterface(object):
 
 
 class UserPhotoInterface(CoreModelInterface):
+    _required_attributes = [
+        # properties:
+        'prt_user',
+        'prt_image',
 
-    def delete(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_user(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_image(self):
-        raise NotImplementedError()
-
-    def delete_image(self):
-        raise NotImplementedError()
+        # methods:
+        'delete',
+        'delete_image',
+    ]

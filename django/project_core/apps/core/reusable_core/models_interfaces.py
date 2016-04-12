@@ -1,4 +1,17 @@
-class CoreModelInterface(object):
+class CoreInterface(object):
+    # _required_attributes must be specified
+
+    def __getattr__(self, name):
+        if name in self._required_attributes:
+            msg = "'{}' is not implemented".format(name)
+            raise NotImplementedError(msg)
+        else:
+            cls = type(self)
+            msg = "'{}' object has no attribute '{}'".format(cls.__name__, name)
+            raise AttributeError(msg)
+
+
+class CoreModelInterface(CoreInterface):
 
     def __unicode__(self):
         raise NotImplementedError()
@@ -17,13 +30,11 @@ class CoreModelInterface(object):
 
 
 class ImageInterface(CoreModelInterface):
+    _required_attributes = [
+        # properties:
+        'prt_img',
 
-    def delete(self):
-        raise NotImplementedError()
-
-    @property
-    def prt_img(self):
-        raise NotImplementedError()
-
-    def delete_img(self):
-        raise NotImplementedError()
+        # methods:
+        'delete',
+        'delete_img',
+    ]
