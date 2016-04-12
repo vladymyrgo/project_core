@@ -13,7 +13,7 @@ class RequestBridge(object):
         return self.django_request.query_params
 
 
-class LogicBridgeViewMixin(object):
+class LogicViewMixin(object):
     """View mixin that adds business logic to derived view as 'logic' property.
     It must be inherited by views that use business logic. Business logic must be written in
     separate class that is derived from 'BaseLogic' and must be in the view as
