@@ -9,7 +9,7 @@ from haystack.inputs import AutoQuery
 from account.models import User
 from account.serializers import UserListSerializer, UserDetailSerializer
 
-from core.reusable_core.core_bridges import LogicBridgeView
+from core.reusable_core.core_bridges import LogicBridgeViewMixin
 from account.reusable_core.views_api_logic import AccountSearchListViewLogic
 
 
@@ -20,7 +20,7 @@ class AccountListView(generics.ListAPIView):
     serializer_class = UserListSerializer
 
 
-class AccountSearchListView(generics.ListAPIView, LogicBridgeView):
+class AccountSearchListView(generics.ListAPIView, LogicBridgeViewMixin):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = UserListSerializer
     logic_class = AccountSearchListViewLogic
