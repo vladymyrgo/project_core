@@ -53,5 +53,9 @@ Create new app:
 Templates creation:
     - create apps/app_name/template/app_name/new_template.jinja2
 
+JS packages installation:
+    - bower install new_app --save
+    - grunt bower
+    - ./manage.py collectstatic
 
 ### END GETTING STARTED ###
