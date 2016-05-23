@@ -20,3 +20,7 @@ How to use AB tests
             return 'page/some_page.jinja2'
 4) In template add urls like:
     <a class="btn btn-primary" href="{{ url('some') }}?abtu=1_ab_t&abau=a_t" role="button">Get started</a>
+
+
+Django ORM queries example for analytics:
+DailyRequestsStatistics.objects.filter(json_data__contains={'/my-page': {'unique_visitors': u'1'}})
